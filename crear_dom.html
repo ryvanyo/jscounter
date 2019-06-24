@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Crear Elementos</title>
+</head>
+<body>
+	<h1>Tarea</h1>
+	<p>Al hacer click sobre una celda se elimina toda la columna</p>
+	<div class="contenedor">
+		
+	</div>
+	<div class="basurero">
+		
+	</div>
+	<script>
+		function iniciar(){
+			var contenedor = document.querySelector(".contenedor"),
+				basurero = document.querySelector(".basurero");
+
+			var input = window.prompt("Ingrese tamaño de tabla");
+			if (input==null) {
+				alert("Debe ingresar un numero entero");
+				return;
+			}
+
+			var  table_size = parseInt(input);
+
+			var table = document.createElement("table");
+			contenedor.appendChild(table);
+
+			table.setAttribute("border", "1");
+
+			for(var i=0;i<table_size; i++){
+				var new_tr = document.createElement("tr");
+				for(j=0; j<table_size; j++){
+					var contenido = 0;
+				    if (i==0||i==table_size-1||j==0||j==table_size-1) {
+				    	contenido = 1;
+				    }
+
+					var new_td = document.createElement("td");
+					new_td.innerHTML = '<span style="font-family: arial; color: red;" onclick="celda_click(this)">'+contenido+'</span>';
+					new_tr.appendChild(new_td);
+				}
+				table.appendChild(new_tr);
+			}
+		}
+		iniciar();
+
+		function celda_click(elem){
+			console.log(elem.parentElement.cellIndex);
+			// elem.parentElement.parentElement.remove();
+		}
+	</script>
+</body>
+</html>

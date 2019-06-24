@@ -1,0 +1,11 @@
+.pager{
+    margin-top: 1em !important; 
+}
+.pager .current{
+    font-weight: bold;
+    color: black;
+}
+.page-login{
+    max-width: 600px;
+    margin: 0 auto;
+}
